@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { FormularioCadastro } from './components/formularioCadastro/FormularioCadastro';
+import {FormularioCadastro} from './components/formularioCadastro/FormularioCadastro';
+import {MenuCabecalho} from './components/header/menu-cabecalho';
 
 class App extends Component {
   render(){
     return (
       <section>
-        <h1>Olá</h1>
+        <MenuCabecalho/>
         <FormularioCadastro/>
     </section>
     );
