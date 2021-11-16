@@ -1,9 +1,15 @@
-.tabelaLogin{
-    display: flex;
-    align-items:center;
-    margin-left: 50%;
-    
+.formLogin{
+    margin-top: 200px;
+    margin-left: 40%;
+    max-width: 25%;    
 }
 #botaoLogin{
-    background-color: #f0f0f0;
+    
+    margin-top: 20px;
+}
+#botaoCadastro{
+    position: relative;
+    left: 57%;
+    margin-top: 20px;
+
 }
