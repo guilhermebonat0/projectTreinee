@@ -4,6 +4,7 @@ const habilidades = require("./habilidadesRoute")
 
 module.exports = app => {
     app.use(express.urlencoded({ extended: true }))
+    app.use(express.json())
     app.use(logins)
     app.use(habilidades)
 }
