@@ -12,10 +12,10 @@ export function FormularioCadastro() {
                 label="Email"
                 className="mb-3"
                 >
-                <Form.Control type="email" placeholder="name@example.com" />
+                <Form.Control type="email" placeholder="name@example.com" name="login" />
                 </FloatingLabel>
                 <FloatingLabel controlId="floatingPassword" label="Senha">
-                <Form.Control type="password" placeholder="Password" />
+                <Form.Control type="password" placeholder="Password"  name="senha" />
                 <Button variant="dark" id="botaoLogin">Login</Button>
                 <Button variant="dark" id="botaoCadastro">Cadastrar-se</Button>
                 </FloatingLabel>
