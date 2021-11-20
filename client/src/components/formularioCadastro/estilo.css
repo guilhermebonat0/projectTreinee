@@ -1,7 +1,6 @@
 .formLogin{
-    margin-top: 200px;
-    margin-left: 40%;
-    max-width: 25%;    
+    justify-content: center;
+       
 }
 #botaoLogin{
     

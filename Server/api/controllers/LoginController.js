@@ -9,10 +9,9 @@ class LoginController {//Faz a leitura de todos os logins
             return res.status(200).json(todosOsLogins)
         }   catch (error) {
             return res.status(500).json(error.message)
-        }
- 
- 
+        } 
     }
+    
     //cria um novo login/cadastro
     static async CriaLogin (req, res) {
         const novoLogin = req.body
@@ -23,8 +22,6 @@ class LoginController {//Faz a leitura de todos os logins
         }catch (error) {
             return res.status(500).json(error.message)
         }
-
-
     }
 }
 

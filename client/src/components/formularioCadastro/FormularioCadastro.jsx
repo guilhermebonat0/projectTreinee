@@ -1,25 +1,68 @@
-import React from 'react';
-import {FloatingLabel, Form } from 'react-bootstrap'
-import Button from 'react-bootstrap/Button'
-import "./estilo.css"
+import {React, useState } from 'react';
+import {TextField, Button} from '@material-ui/core'
 
-export function FormularioCadastro() {
-
+export function FormularioCadastro({ aoEnviar }) {
+   
+    const [email, setEmail] = useState(" ");
+    const [senha, setSenha] = useState(" ");
+    
+    console.log(email)
     return (
-            <form className="formLogin">
-                <FloatingLabel
-                controlId="floatingInput"
-                label="Email"
-                className="mb-3"
-                >
-                <Form.Control type="email" placeholder="name@example.com" name="login" />
-                </FloatingLabel>
-                <FloatingLabel controlId="floatingPassword" label="Senha">
-                <Form.Control type="password" placeholder="Password"  name="senha" />
-                <Button variant="dark" id="botaoLogin">Login</Button>
-                <Button variant="dark" id="botaoCadastro">Cadastrar-se</Button>
-                </FloatingLabel>
-            </form>
-                
-            );
+        <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          aoEnviar({ email, senha });
+        }}
+      >
+         
+         <TextField
+        value={email}
+        onChange={(event) => {
+            setEmail(event.target.value);
+        }}
+        id="email"
+        label="email"
+        type="email"
+        required
+        variant="filled"
+        margin="normal"
+        fullWidth
+      />
+
+        <TextField
+        value={senha}
+        onChange={(event) => {
+            setSenha(event.target.value);
+        }}    
+        id="senha"
+        label="Senha" 
+        variant="filled"
+        type="password" 
+        margin="normal"
+        required
+        fullWidth
+        />
+
+        <Button 
+        variant="contained"
+        margin="normal"  
+        size="large"
+        type="submit"
+        fullWidth
+        >
+        Fazer Cadastro
+        </Button>
+
+        <Button 
+        variant="contained" 
+        margin="normal"
+        padding="10"
+        fullWidth  
+        size="large"
+        type="submit"
+        >
+        Login
+        </Button>
+        </form>    
+    );
 }

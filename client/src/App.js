@@ -1,13 +1,14 @@
 import React from 'react';
 import {FormularioCadastro} from './components/formularioCadastro/FormularioCadastro';
 import {MenuCabecalho} from './components/header/menu-cabecalho';
+import {Container} from '@material-ui/core';
 
 function App() {
   return (
-    <section>
-        <MenuCabecalho/>
+    <Container component="article" maxWidth="sm">
+        {/* <MenuCabecalho/> */}
         <FormularioCadastro/> 
-    </section>
+    </Container>
     );
   }
 

@@ -9,6 +9,7 @@ class QualificacoesController {
             return res.status(500).json(error.message)
         }
     }
+    
     static async NovaQualificacao (req, res ){
         const novaQualificacao = req.body        
         try {
@@ -18,7 +19,6 @@ class QualificacoesController {
             return res.status(500).json(error.message)
         }
     }
-
 }
 
 module.exports = QualificacoesController;
