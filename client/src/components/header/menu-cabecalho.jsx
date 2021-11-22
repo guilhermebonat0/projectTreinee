@@ -1,42 +1,30 @@
 import React from 'react';
-import {Navbar, Container, Offcanvas, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import { Box, Button, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core'
+import MenuIcon from "@material-ui/icons/Menu"
 import "./estilo.css"
 
 
-export function MenuCabecalho (){
-    
-    return (
-        <Navbar bg="light" expand={false}>
-        <Container fluid>
-        <Navbar.Brand href="#">Galeria de Habilidades</Navbar.Brand>
-        <Navbar.Toggle aria-controls="offcanvasNavbar" />
-        <Navbar.Offcanvas
-        id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel"
-        placement="end"
-        >
-        <Offcanvas.Header closeButton>
-        <Offcanvas.Title id="offcanvasNavbarLabel">Galeria de Habilidades</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-        <Nav className="justify-content-end flex-grow-1 pe-3">
-        <Nav.Link href="#action1">Home</Nav.Link>
-        <Nav.Link href="#action2">Link</Nav.Link>
-        <Nav.Link href="#action3">Configurações</Nav.Link>
-        </Nav>
-        <Form className="d-flex">
-        <FormControl
-         type="search"
-         placeholder="Pesquise aqui"
-         className="me-2"
-         aria-label="Search"
-        />
-        <Button variant="outline-success">Pesquisa</Button>
-        </Form>
-        </Offcanvas.Body>
-        </Navbar.Offcanvas>
-        </Container>
-        </Navbar>
-        );
-    }
+export function MenuCabecalho() {
 
+    return (
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 2 }}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        Galeria de Habilidades
+                    </Typography>
+                    <Button color="inherit">Login</Button>
+                </Toolbar>
+            </AppBar>
+        </Box>
+    );
+}
