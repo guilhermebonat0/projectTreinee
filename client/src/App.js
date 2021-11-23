@@ -1,13 +1,23 @@
 import React from 'react';
-import {FormularioCadastro} from './components/formularioCadastro/FormularioCadastro';
 import {MenuCabecalho} from './components/header/menu-cabecalho';
+import {FormularioCadastro} from './components/formularioCadastro/FormularioCadastro';
 import {Container} from '@material-ui/core';
+import ValidacoesCadastro from './contexts/ValidacoesCadastro';
+import { validarEmail, validarSenha } from './models/cadastro';
+
 
 function App() {
   return (
     <Container component="article" maxWidth="sm">
         <MenuCabecalho/>
-        <FormularioCadastro/> 
+        <ValidacoesCadastro.Provider
+        value={{email:validarEmail, senha:validarSenha}}
+        >
+          <FormularioCadastro/>
+        </ValidacoesCadastro.Provider> 
+        
+        
+         
     </Container>
     );
   }
