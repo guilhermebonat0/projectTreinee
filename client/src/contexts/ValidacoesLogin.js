@@ -1,18 +1,17 @@
 import React from 'react';
-import { validaEmail } from '../models/cadastro';
+import { validarEmail } from '../models/login';
 
-const ValidacoesCadastro = React.createContext(
+const ValidacoesLogin = React.createContext(
     {
-        usuario: semValidacao,
         email: semValidacao,
         senha: semValidacao
     }
 );
 function semValidacao(dados) {
-    const validar = validaEmail;
+    const validar = validarEmail;
     console.log(validar)
     console.log(dados)
     return { valido:true, texto: "" }
 }
 
-export default ValidacoesCadastro;
+export default ValidacoesLogin;

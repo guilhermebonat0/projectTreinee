@@ -1,4 +1,12 @@
-function validarEmail(email){
+function validaUsuario(usuario){
+    if (usuario.length === 0 || usuario.length > 15 ) {
+        return {valido:false, texto:"Usuario deve conter até 15 caracteres!"}
+    }else{
+        return {valido:true, texto:""} 
+    }
+}
+
+function validaEmail(email){
     if(email.length === 0) {
         return {valido:false, texto:"Email deve ser válido"}
     }else{
@@ -6,7 +14,7 @@ function validarEmail(email){
     }
 }
 
-function validarSenha(senha){
+function validaSenha(senha){
     if(senha.length < 8) {
         return {valido:false, texto:"Senha deve conter no mínimo 8 caracteres"}
     }else{
@@ -14,4 +22,4 @@ function validarSenha(senha){
     }
 }
 
-export{validarEmail, validarSenha};
+export{validaUsuario, validaEmail, validaSenha};

@@ -10,15 +10,14 @@ class HabilidadesController {
         }
     }
     static async NovaHabilidade (req, res ){
-        const novaHabiolidade = req.body        
+        const novaHabilidade = req.body        
         try {
-            const cadastraNovaHabilidade = await database.habilidades.create(novaHabiolidade)          
+            const cadastraNovaHabilidade = await database.habilidades.create(novaHabilidade)          
             return res.status(200).json(cadastraNovaHabilidade)
         } catch (error) {
             return res.status(500).json(error.message)
         }
     }
-
 }
 
 module.exports = HabilidadesController

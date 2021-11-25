@@ -1,17 +1,16 @@
-import React, { useState, useContext } from 'react';
-import ValidacoesCadastro from '../../contexts/ValidacoesCadastro';
+import React, {useState, useContext } from 'react';
+import ValidacoesLogin from '../../contexts/ValidacoesLogin';
 import { TextField, Button } from '@material-ui/core';
-import axios from 'axios';
 
-function FormularioCadastro() {
 
-  const [usuario, setUsuario] = useState("");
+function FormularioLogin({ aoEnviar }) {
+  
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [erros, setErros] = useState({ usuario: { valido: true, texto: "" }, email: { valido: true, texto: "" }, senha: { valido: true, texto: "" } });
+  const [erros, setErros] = useState({ email: { valido: true, texto: "" }, senha: { valido: true, texto: "" }});
+  
 
-
-  const validacoes = useContext(ValidacoesCadastro)
+  const validacoes = useContext(ValidacoesLogin)
   function validarCampos(event) {
     const { name, value } = event.target;
     const novoEstado = { ...erros };
@@ -23,38 +22,21 @@ function FormularioCadastro() {
     for (let campo in erros) {
       if (!erros[campo].valido) {
         return false;
-      } else {
-        return true;
       }
     }
+    return true;
   }
+
 
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        axios.post("http://localhost:3001/cadastro", { usuario: usuario, email: email, senha: senha })
-          .then(() => {
-            alert('Cadastro realizado com Sucesso!')
-          });
+        if (possoEnviar()) {
+          aoEnviar({ email, senha })
+        }
       }}
     >
-
-      <TextField
-        onBlur={validarCampos}
-        value={usuario}
-        onChange={(event) => {
-          setUsuario(event.target.value);
-        }}
-        error={!erros.usuario.valido}
-        helperText={erros.usuario.texto}
-        margin="normal"
-        required
-        name="usuario"
-        id="usuario"
-        label="Usuario"
-        variant="standard"
-        fullWidth />
 
       <TextField
         onBlur={validarCampos}
@@ -93,17 +75,16 @@ function FormularioCadastro() {
       />
 
       <Button
-        onClick={possoEnviar}
         variant="contained"
         margin="normal"
+        padding="10"
+        fullWidth
         size="large"
         type="submit"
-        fullWidth
       >
-        Fazer Cadastro
+        Login
       </Button>
     </form>
   );
-
 }
-export default FormularioCadastro;
+export default FormularioLogin;

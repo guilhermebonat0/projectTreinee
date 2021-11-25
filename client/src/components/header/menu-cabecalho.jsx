@@ -1,10 +1,8 @@
 import React from 'react';
 import { Box, Button, AppBar, Toolbar, IconButton, Typography } from '@material-ui/core'
 import MenuIcon from "@material-ui/icons/Menu"
-import "./estilo.css"
 
-
-export function MenuCabecalho() {
+function MenuCabecalho() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -28,3 +26,4 @@ export function MenuCabecalho() {
         </Box>
     );
 }
+export default MenuCabecalho;

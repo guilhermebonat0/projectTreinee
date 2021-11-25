@@ -1,6 +1,6 @@
 const database = require('../models/index.js')
 
-class LoginController {//Faz a leitura de todos os logins
+class CadastroController {//Faz a leitura de todos os logins
     
     static async MostraLogin(req, res) {
 
@@ -13,12 +13,12 @@ class LoginController {//Faz a leitura de todos os logins
     }
     
     //cria um novo login/cadastro
-    static async CriaLogin (req, res) {
-        const novoLogin = req.body
+    static async CriaCadastro (req, res) {
+        const novoCadastro = req.body
        
         try {
-            const criaUmLogin = await database.logins.create(novoLogin)
-            return res.status(200).json(criaUmLogin)          
+            const criaUmCadastro = await database.logins.create(novoCadastro)
+            return res.status(200).json(criaUmCadastro)          
         }catch (error) {
             return res.status(500).json(error.message)
         }
@@ -26,4 +26,4 @@ class LoginController {//Faz a leitura de todos os logins
 }
 
 
-module.exports = LoginController
+module.exports = CadastroController
