@@ -16,14 +16,14 @@ export default function Main() {
         <>
 
             <ValidacoesLogin.Provider
-                value={{ email: validarEmail, senha: validarSenha }}
+                value={{ email: validarEmail, senhaHash: validarSenha }}
             >
                 <FormularioLogin />
             </ValidacoesLogin.Provider>
 
 
             <ValidacoesCadastro.Provider
-                value={{usuario:validaUsuario, email: validaEmail, senha: validaSenha }}
+                value={{usuario:validaUsuario, email: validaEmail, senhaHash: validaSenha }}
             >
                 <FormularioCadastro />
             </ValidacoesCadastro.Provider>

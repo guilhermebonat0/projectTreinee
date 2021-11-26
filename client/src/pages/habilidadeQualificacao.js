@@ -1,6 +1,8 @@
 import React from 'react';
 import Habilidades from '../components/habilidades/Habilidades';
 import Qualificacao from '../components/qualificacoes/Qualificacoes';
+import TabelaQualificacao from '../components/tabela/tabelaQualificacao';
+import TabelaHabilidades from '../components/tabela/tabelaHabilidade';
 
 //VALIDACOES HABILIDADES 
 import ValidacoesHabilidades from '../contexts/ValidacoesHabilidades';
@@ -24,7 +26,8 @@ export default function HabilidadeQualificacao() {
             >
                 <Qualificacao />
             </ValidacoesQualificacao.Provider>
-
+            <TabelaQualificacao />
+            <TabelaHabilidades />
         </>
     );
 }

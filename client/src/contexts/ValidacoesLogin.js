@@ -4,7 +4,7 @@ import { validarEmail } from '../models/login';
 const ValidacoesLogin = React.createContext(
     {
         email: semValidacao,
-        senha: semValidacao
+        senhaHash: semValidacao
     }
 );
 function semValidacao(dados) {

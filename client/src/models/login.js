@@ -6,8 +6,8 @@ function validarEmail(email){
     }
 }
 
-function validarSenha(senha){
-    if(senha.length < 8) {
+function validarSenha(senhaHash){
+    if(senhaHash.length < 8) {
         return {valido:false, texto:"Senha deve conter no mínimo 8 caracteres"}
     }else{
         return {valido:true, texto:""}

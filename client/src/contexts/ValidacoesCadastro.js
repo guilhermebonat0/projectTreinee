@@ -5,7 +5,7 @@ const ValidacoesCadastro = React.createContext(
     {
         usuario: semValidacao,
         email: semValidacao,
-        senha: semValidacao
+        senhaHash: semValidacao
     }
 );
 function semValidacao(dados) {

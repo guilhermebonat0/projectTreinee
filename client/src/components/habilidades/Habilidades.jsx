@@ -1,13 +1,14 @@
-import React, {useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import ValidacoesHabilidades from '../../contexts/ValidacoesHabilidades';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
+import '../../assets/estilo.css'
 
 function Habilidades() {
-  
+
   const [habilidades, setHabilidades] = useState("");
-  const [erros, setErros] = useState({ habilidades: { valido: true, texto: "" }});
-  
+  const [erros, setErros] = useState({ habilidades: { valido: true, texto: "" } });
+
 
   const validacoes = useContext(ValidacoesHabilidades)
   function validarCampos(event) {
@@ -21,24 +22,24 @@ function Habilidades() {
     for (let campo in erros) {
       if (!erros[campo].valido) {
         return false;
-      }else {
+      } else {
         return true;
       }
-    }  
+    }
   }
 
 
   return (
     <form
-    onSubmit={(event) => {
-      event.preventDefault();
-      axios.post("http://localhost:3001/habilidades", { habilidades:habilidades})
-        .then(() => {
-          alert('Habilidade cadastrada com Sucesso!')
-        });
-    }}
-  >
-
+      onSubmit={(event) => {
+        event.preventDefault();
+        axios.post("http://localhost:3001/habilidades", { habilidades: habilidades })
+          .then(() => {
+            alert('Habilidade cadastrada com Sucesso!')
+          });
+      }}
+    >
+      <h1 className="titulo">Cadastre sua Habilidade</h1>
       <TextField
         onBlur={validarCampos}
         value={habilidades}

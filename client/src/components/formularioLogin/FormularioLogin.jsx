@@ -1,6 +1,7 @@
 import React, {useState, useContext } from 'react';
 import ValidacoesLogin from '../../contexts/ValidacoesLogin';
 import { TextField, Button } from '@material-ui/core';
+import '../../assets/estilo.css'
 
 
 function FormularioLogin({ aoEnviar }) {
@@ -37,7 +38,7 @@ function FormularioLogin({ aoEnviar }) {
         }
       }}
     >
-
+      <h1 className="titulo">Faça seu Login</h1>
       <TextField
         onBlur={validarCampos}
         value={email}

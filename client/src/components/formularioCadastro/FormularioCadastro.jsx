@@ -2,13 +2,15 @@ import React, { useState, useContext } from 'react';
 import ValidacoesCadastro from '../../contexts/ValidacoesCadastro';
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
+import '../../assets/estilo.css'
 
 function FormularioCadastro() {
-
+  
   const [usuario, setUsuario] = useState("");
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [erros, setErros] = useState({ usuario: { valido: true, texto: "" }, email: { valido: true, texto: "" }, senha: { valido: true, texto: "" } });
+  const [senhaHash, setSenha] = useState("");
+  const [erros, setErros] = useState({ usuario: { valido: true, texto: "" }, email: { valido: true, texto: "" }, senhaHash: { valido: true, texto: "" } });
 
 
   const validacoes = useContext(ValidacoesCadastro)
@@ -28,18 +30,19 @@ function FormularioCadastro() {
       }
     }
   }
-
+  const history = useHistory();
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        axios.post("http://localhost:3001/cadastro", { usuario: usuario, email: email, senha: senha })
+        axios.post("http://localhost:3001/cadastro", { usuario: usuario, email: email, senhaHash: senhaHash })
           .then(() => {
             alert('Cadastro realizado com Sucesso!')
+            history.push('/habilidades');
           });
       }}
     >
-
+      <h1 className="titulo">Faça seu Cadastro</h1>
       <TextField
         onBlur={validarCampos}
         value={usuario}
@@ -76,14 +79,14 @@ function FormularioCadastro() {
 
       <TextField
         onBlur={validarCampos}
-        value={senha}
+        value={senhaHash}
         onChange={(event) => {
           setSenha(event.target.value);
         }}
-        error={!erros.senha.valido}
-        helperText={erros.senha.texto}
-        name="senha"
-        id="senha"
+        error={!erros.senhaHash.valido}
+        helperText={erros.senhaHash.texto}
+        name="senhaHash"
+        id="senhaHash"
         label="Senha"
         variant="standard"
         type="password"

@@ -11,6 +11,19 @@ class CadastroController {//Faz a leitura de todos os logins
             return res.status(500).json(error.message)
         } 
     }
+    static async MostraUmLogin(req, res) {
+        const {id} = req.params
+        try{
+            const umLogin = await database.logins.findOne ( {
+                where: {
+                    id: Number(id)
+                }
+            })
+            return res.status(200).json(umLogin)
+        }   catch (error) {
+            return res.status(500).json(error.message)
+        } 
+    }
     
     //cria um novo login/cadastro
     static async CriaCadastro (req, res) {
@@ -20,6 +33,34 @@ class CadastroController {//Faz a leitura de todos os logins
             const criaUmCadastro = await database.logins.create(novoCadastro)
             return res.status(200).json(criaUmCadastro)          
         }catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
+
+    static async EditaCadastro (req, res) {
+        const novasInfos = req.body
+        const { id }= req.params
+        try {
+            await database.logins.update(novasInfos, id)
+            const pessoaAtualizada  = await database.logins.findOne ( {
+                where: {
+                    id: Number(id)
+                }
+            }); return res.status(500).json(pessoaAtualizada) 
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+
+    }
+
+    static async ApagaCadastro(req, res) {
+        const { id } = req.params
+        try {
+            await database.logins.destroy({
+                where: {
+                    id: Number(id)
+                }}); return res.status(200).json({mensagem:`Cadastro ${id} deletada com sucesso`})  
+        } catch (error) {
             return res.status(500).json(error.message)
         }
     }
