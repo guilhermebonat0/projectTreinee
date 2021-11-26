@@ -11,14 +11,20 @@ class CadastroController {//Faz a leitura de todos os logins
             return res.status(500).json(error.message)
         } 
     }
+
     static async MostraUmLogin(req, res) {
-        const {id} = req.params
+        const {email, senhaHash} = req.body
+
         try{
             const umLogin = await database.logins.findOne ( {
                 where: {
-                    id: Number(id)
+                    email: String(email),
+                    senhaHash: String(senhaHash)
                 }
             })
+            if (!umLogin){
+                return res.status(400).json({message:"Usuario ou senha incorretos"})
+            }
             return res.status(200).json(umLogin)
         }   catch (error) {
             return res.status(500).json(error.message)

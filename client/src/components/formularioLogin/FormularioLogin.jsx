@@ -2,13 +2,15 @@ import React, {useState, useContext } from 'react';
 import ValidacoesLogin from '../../contexts/ValidacoesLogin';
 import { TextField, Button } from '@material-ui/core';
 import '../../assets/estilo.css'
-
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 function FormularioLogin({ aoEnviar }) {
   
+  
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
-  const [erros, setErros] = useState({ email: { valido: true, texto: "" }, senha: { valido: true, texto: "" }});
+  const [senhaHash, setSenhahash] = useState("");
+  const [erros, setErros] = useState({ email: { valido: true, texto: "" }, senhaHash: { valido: true, texto: "" }});
   
 
   const validacoes = useContext(ValidacoesLogin)
@@ -23,19 +25,22 @@ function FormularioLogin({ aoEnviar }) {
     for (let campo in erros) {
       if (!erros[campo].valido) {
         return false;
+      }else {
+        return true;
       }
-    }
-    return true;
+    }  
   }
 
-
+  const history = useHistory();
   return (
     <form
       onSubmit={(event) => {
         event.preventDefault();
-        if (possoEnviar()) {
-          aoEnviar({ email, senha })
-        }
+        axios.post("http://localhost:3001/login", {email: email, senhaHash: senhaHash })
+          .then(() => {
+            alert('Cadastro realizado com Sucesso!')
+            history.push('/habilidades');
+          });
       }}
     >
       <h1 className="titulo">Faça seu Login</h1>
@@ -59,14 +64,14 @@ function FormularioLogin({ aoEnviar }) {
 
       <TextField
         onBlur={validarCampos}
-        value={senha}
+        value={senhaHash}
         onChange={(event) => {
-          setSenha(event.target.value);
+          setSenhahash(event.target.value);
         }}
-        error={!erros.senha.valido}
-        helperText={erros.senha.texto}
-        name="senha"
-        id="senha"
+        error={!erros.senhaHash.valido}
+        helperText={erros.senhaHash.texto}
+        name="senhaHash"
+        id="senhaHash"
         label="Senha"
         variant="standard"
         type="password"
@@ -76,6 +81,7 @@ function FormularioLogin({ aoEnviar }) {
       />
 
       <Button
+        onClick={possoEnviar}
         variant="contained"
         margin="normal"
         padding="10"
