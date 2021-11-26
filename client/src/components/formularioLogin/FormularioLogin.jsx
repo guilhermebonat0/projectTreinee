@@ -38,7 +38,7 @@ function FormularioLogin({ aoEnviar }) {
         event.preventDefault();
         axios.post("http://localhost:3001/login", {email: email, senhaHash: senhaHash })
           .then(() => {
-            alert('Cadastro realizado com Sucesso!')
+            alert('Login realizado com Sucesso!')
             history.push('/habilidades');
           });
       }}

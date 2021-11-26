@@ -26,8 +26,9 @@ export default function HabilidadeQualificacao() {
             >
                 <Qualificacao />
             </ValidacoesQualificacao.Provider>
-            <TabelaQualificacao />
             <TabelaHabilidades />
+            <TabelaQualificacao />
+            
         </>
     );
 }
