@@ -1,3 +1,5 @@
+const logins = require('./logins')
+const habilidades = require('./habilidades')
 'use strict';
 const {
   Model
@@ -10,11 +12,26 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      models.habilidades.belongsToMany(models.logins, { through: models.qualificacoes });
+      models.logins.belongsToMany(models.habilidades, { through: models.qualificacoes });
     }
-  };
+  }
   qualificacoes.init({
-    nivel: DataTypes.STRING
+    logins_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: logins,
+        key: 'logins_id'
+      }
+    },
+    habilidades_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: habilidades,
+        key: 'habilidades_id',
+      },
+    },
+    nivel: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'qualificacoes',
